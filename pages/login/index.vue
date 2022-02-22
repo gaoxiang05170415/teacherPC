@@ -5,10 +5,12 @@
 			<view class="bodyForm">
 				<image src="../../image/logo.png" mode="" style="width: 100%;height: 94rpx;"></image>
 				<view class="account">
-					<input type="text" value="" v-model="account" placeholder="账号" placeholder-style="color:#B6B6B6;opacity:0.5"/>
+					<input type="text" value="" v-model="formData.account" placeholder="账号"
+						placeholder-style="color:#B6B6B6;opacity:0.5" />
 				</view>
 				<view class="password">
-					<input type="text" value="" v-model="password" placeholder="密码" password="true" placeholder-style="color:#B6B6B6;opacity:0.5"/>
+					<input type="text" value="" v-model="formData.password" placeholder="密码" password="true"
+						placeholder-style="color:#B6B6B6;opacity:0.5" />
 				</view>
 				<view class="login" @click="login">
 					登&nbsp;&nbsp;&nbsp;录
@@ -24,47 +26,67 @@
 </template>
 
 <script>
+	// import api from '../../request/api.js'
+	import api from '../../request/api'
 	export default {
-		data(){
-			return{
-				account:'',
-				password:''
+		data() {
+			return {
+				formData: {
+					account: '',
+					password: ''
+				},
+				account: '',
+				password: ''
 			}
 		},
-		methods:{
-			login(){
-				uni.request({
-					url:'http://outuser.choor.cn/out_login_api/login/doLogin',
-					data:{
-						"account":this.account,
-						"password":this.password
-					},
-					method:"post",
-					success:res => {
+		methods: {
+			login() {
+				// uni.request({
+				// 	url: 'http://outuser.choor.cn/out_login_api/login/doLogin',
+				// 	data: {
+				// 		"account": this.account,
+				// 		"password": this.password
+				// 	},
+				// 	method: "post",
+				// 	success: res => {
+				// 		console.log(res);
+				// 		if (res.data.code == 0) {
+				// 			uni.redirectTo({
+				// 				url: '../home/index'
+				// 			})
+				// 		}
+				// 	}
+				// })
+
+				api.doLogin(this.formData).then(res => {
 						console.log(res);
-						if(res.data.code == 0){
-							uni.redirectTo({
-								url:'../home/index'
+						if (res.code == 0) {
+							uni.navigateTo({
+								url: '../home/index'
 							})
 						}
-					}
-				})
+					})
+					.catch(err => {
+						console.log(err);
+					})
 			}
 		}
 	}
 </script>
 
 <style>
-	.body{
+	.body {
 		width: 100vw;
-		height: 94vh;
+		height: 100vh;
 		position: relative;
 	}
-	.backgtoundImage{
+
+	.backgtoundImage {
 		width: 100%;
 		height: 100%;
 	}
-	.bodyForm{
+
+	.bodyForm {
 		width: 70%;
 		height: 600rpx;
 		position: absolute;
@@ -74,17 +96,21 @@
 		bottom: 0;
 		margin: auto;
 	}
-	.account,.password{
+
+	.account,
+	.password {
 		width: 100%;
 		height: 74rpx;
 		margin-top: 54rpx;
 		box-shadow: 5px 8px 53px 0px rgba(188, 222, 247, 0.65);
 	}
-	input{
+
+	input {
 		width: 100%;
 		height: 100%;
 	}
-	.login{
+
+	.login {
 		width: 100%;
 		height: 74rpx;
 		background: linear-gradient(90deg, #46A8F1, #2B71FF);
@@ -96,17 +122,20 @@
 		line-height: 74rpx;
 		margin-top: 45rpx;
 	}
-	.formBottom{
+
+	.formBottom {
 		width: 100%;
 		text-align: center;
 		color: #009BFF;
 		font-size: 22rpx;
 		margin-top: 26rpx;
 	}
-	.register{
+
+	.register {
 		padding-right: 30rpx;
 	}
-	.forgotPwd{
+
+	.forgotPwd {
 		padding-left: 30rpx;
 	}
 </style>

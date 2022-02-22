@@ -21,6 +21,7 @@
 		
 	],
 	"globalStyle": {
+		"navigationStyle":"custom",    //隐藏标题栏
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
