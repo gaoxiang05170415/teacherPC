@@ -16,7 +16,7 @@
 					登&nbsp;&nbsp;&nbsp;录
 				</view>
 				<view class="formBottom">
-					<text class="register">新用户注册</text>
+					<text class="register" @click="register">新用户注册</text>
 					<text>|</text>
 					<text class="forgotPwd">忘记密码</text>
 				</view>
@@ -40,6 +40,7 @@
 			}
 		},
 		methods: {
+			//登录
 			login() {
 				// uni.request({
 				// 	url: 'http://outuser.choor.cn/out_login_api/login/doLogin',
@@ -69,6 +70,12 @@
 					.catch(err => {
 						console.log(err);
 					})
+			},
+			//注册
+			register(){
+				uni.navigateTo({
+					url: '../register/index'
+				})
 			}
 		}
 	}
