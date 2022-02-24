@@ -44,6 +44,12 @@
 			"style": {
 				"navigationBarTitleText": "首页"
 			}
+		},
+		{
+			"path": "pages/MyClass/MyClass",
+			"style": {
+				"navigationBarTitleText": "我的班级"
+			}
 		}
 		
 	],
