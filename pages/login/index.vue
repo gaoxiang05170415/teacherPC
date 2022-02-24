@@ -5,11 +5,11 @@
 			<view class="bodyForm">
 				<image src="../../image/logo.png" mode="" style="width: 100%;height: 94rpx;"></image>
 				<view class="account">
-					<input type="text" value="" v-model="formData.account" placeholder="账号"
+					<input type="text" v-model="formData.account" placeholder="账号"
 						placeholder-style="color:#B6B6B6;opacity:0.5" />
 				</view>
 				<view class="password">
-					<input type="text" value="" v-model="formData.password" placeholder="密码" password="true"
+					<input type="text" v-model="formData.password" placeholder="密码" password="true"
 						placeholder-style="color:#B6B6B6;opacity:0.5" />
 				</view>
 				<view class="login" @click="login">
@@ -18,7 +18,7 @@
 				<view class="formBottom">
 					<text class="register" @click="register">新用户注册</text>
 					<text>|</text>
-					<text class="forgotPwd">忘记密码</text>
+					<text class="forgotPwd" @click="forgotPwd">忘记密码</text>
 				</view>
 			</view>
 		</view>
@@ -75,6 +75,12 @@
 			register(){
 				uni.navigateTo({
 					url: '../register/index'
+				})
+			},
+			//忘记密码
+			forgotPwd(){
+				uni.navigateTo({
+					url: '../notice/noticeList'
 				})
 			}
 		}

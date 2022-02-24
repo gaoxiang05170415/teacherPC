@@ -50,6 +50,18 @@
 			"style": {
 				"navigationBarTitleText": "我的班级"
 			}
+		},
+		{
+			"path": "pages/notice/noticeList",
+			"style": {
+				"navigationBarTitleText": "我的通知"
+			}
+		},
+		{
+			"path": "pages/notice/noticeDetail",
+			"style": {
+				"navigationBarTitleText": "通知详情"
+			}
 		}
 		
 	],
