@@ -37,11 +37,13 @@ const token = uni.getStorageSync('token');
 	// 	return;
 	// }
 	return new Promise((resolve, reject) => {
+		const token = uni.getStorageSync('token');
 		uni.request({
 			url: "http://outuser.choor.cn" + url,
 			method: method,
 			header: {
 				// token: token
+				"Authorization":token,
 				"content-type": "application/json"
 			},
 			data: {

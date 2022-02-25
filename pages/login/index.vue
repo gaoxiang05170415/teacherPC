@@ -62,6 +62,18 @@
 				api.doLogin(this.formData).then(res => {
 						console.log(res);
 						if (res.code == 0) {
+							uni.setStorage({
+								key:'currentUserId',
+								data:res.data.currentUserId
+							})
+							uni.setStorage({
+								key:'token',
+								data:res.data.tokenString
+							})
+							uni.setStorage({
+								key:'schoolClassId',
+								data:res.data.schoolId
+							})
 							uni.navigateTo({
 								url: '../home/index'
 							})
